@@ -1,5 +1,6 @@
-- name: frontend playbook
+- name: Roboshop frontend playbook
   hosts: all
   become: true
   roles:
-    - frontend
+    - "{{ role_name }}"
+
