@@ -1,6 +1,6 @@
 - name: Install MySQL Server
   ansible.bulitin.dnf:
-     name:  mysql-server
+     name: mysql-server
 
 - name: Start MySQL Service
   ansible.bulitin.systemd_service:
