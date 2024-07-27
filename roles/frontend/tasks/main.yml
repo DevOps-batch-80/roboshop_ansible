@@ -1,5 +1,5 @@
 - name: Disable default nginx module
-  ansible.builtin.shell:  dnf module disable nginx -y
+  ansible.builtin.shell: dnf module disable nginx -y
 
 - name: Enable Nginx 24 Version
   ansible.builtin.shell: dnf module enable nginx:1.24 -y
@@ -11,10 +11,10 @@
 
 - name: Copy nginx config file
   ansible.builtin.template:
-      src: nginx.conf
-      dest: /etc/nginx/nginx.conf
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
-- name: Setup App Prerequistes
+- name: Setup App Prerequisites
   ansible.builtin.include_role:
     name: common
     tasks_from: app-prereq
@@ -24,7 +24,5 @@
     state: restarted
     name: nginx
     enabled: true
-
-
 
 
