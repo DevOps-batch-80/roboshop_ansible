@@ -1,6 +1,6 @@
 - name: Install Maven and Java
   ansible builtin.dnf:
-    name:  maven
+    name: maven
     state: latest
 
 - name: Setup App Prerequisites
