@@ -11,4 +11,4 @@
 
 
 - name: Load Master Data
-  ansible.builtin.shell: mongosh --host mongo.dev.renuka.online </app/db/master-data.js
+  ansible.builtin.shell: mongosh --host mongo.{{ env  }}.renuka.online </app/db/master-data.js
