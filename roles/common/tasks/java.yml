@@ -1,7 +1,6 @@
 - name: Install Maven and Java
-  ansible builtin.dnf:
+  ansible.builtin.dnf:
     name: maven
-    state: latest
 
 - name: Setup App Prerequisites
   ansible.builtin.include_role:
