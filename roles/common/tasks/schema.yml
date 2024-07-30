@@ -2,32 +2,28 @@
   when: schema_setup == "mongo"
   block:
     - name: COpy MongoDB repo file
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
-
 
     - name: Install MongoDB Client
       ansible.builtin.dnf:
         name: mongodb-mongosh
         state: latest
 
-
     - name: Load Master Data
-      ansible.builtin.shell: mongosh --host mongo.{{ env  }}.renuka.online </app/db/{{ item }}.js
+      ansible.builtin.shell: mongosh --host mongo.{{ env }}.renuka.online </app/db/{{ item }}.js
       loop: "{{schema_files}}"
 
 - name: Load MySQL schema
   when: schema_setup == "mysql"
   block:
-    - name: Install Mysql Client
+    - name: Install mysql Client
       ansible.builtin.dnf:
         name: mysql
         state: latest
 
-
     - name: Load Master Data
-      ansible.builtin.shell: mysql -h mysql.{{ env }}.renuka.online -uroot -pRoboShop@1 < /app/db/{{ item }}.sql
+      ansible.builtin.shell: mysql -h mysql.{{ env }}.renuka.online -uroot -p{{ secrets.MYSQL_ROOT_PASSWORD }} < /app/db/{{ item }}.sql
       loop: "{{schema_files}}"
-
 
