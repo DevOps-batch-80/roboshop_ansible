@@ -1,0 +1,4 @@
+- name: Setup python service
+  ansible.builtin.include_role:
+    name: common
+    task_from: python
