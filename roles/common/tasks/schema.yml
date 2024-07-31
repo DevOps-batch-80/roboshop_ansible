@@ -2,7 +2,7 @@
   when: schema_setup == "mongo"
   block:
     - name: COpy MongoDB repo file
-      ansible.builtin.template:
+      ansible.builtin.copy:
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
 
@@ -24,6 +24,6 @@
         state: latest
 
     - name: Load Master Data
-      ansible.builtin.shell: mysql -h mysql.{{ env }}.renuka.online -uroot -pRoboshop@1 < /app/db/{{ item }}.sql
+      ansible.builtin.shell: mysql -h mysql.{{ env }}.renuka.online -uroot -pRoboShop@1 < /app/db/{{ item }}.sql
       loop: "{{schema_files}}"
 
